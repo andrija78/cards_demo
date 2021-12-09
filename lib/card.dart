@@ -16,10 +16,7 @@ class GameCard {
 
   String get suiteString => suite.toString().split('.').last;
   String get valueString => value.toString().split('.').last.replaceAll("v", "");
-  String get assetName {
-    String assetName = valueString + "_of_" + suiteString + ".png";
-    return assetName;
-  }
+  String get assetName => valueString + "_of_" + suiteString + ".png";
 
   const GameCard({required this.suite, required this.value});
 }
@@ -27,8 +24,6 @@ class GameCard {
 class PokerBasicCard extends StatelessWidget {
   final bool isVisible;
   final GameCard? card;
-  // final GlobalKey key;
-
   final String size;
 
   static const imageWidth = {'SMALL': 30.0 * 1.5, 'LARGE': 60.0};
@@ -45,7 +40,7 @@ class PokerBasicCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
         child: Image.asset('assets/${(card ?? const GameCard(suite: Suite.hearts, value: Value.ace)).assetName}',
             height: imageHeight[size], width: imageWidth[size]),
-      ), //key),
+      ),
       maintainSize: true,
       maintainAnimation: true,
       maintainState: true,
